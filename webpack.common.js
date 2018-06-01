@@ -28,23 +28,9 @@ const LOGIN_API = NPM_SCRIPT === 'start' ? 'http://grayscale.newdhb.com' //http:
 	: NPM_SCRIPT === 'build' ? 'http://manager.newdhb.com/Manager/Home/index'
 	: NPM_SCRIPT === 'build:y' ? 'https://yadmin.dhb168.com/Manager/Home/index' : 'https://admin.dhb168.com/Manager/Home/index'; */
 
-const fs = require('fs');
 
-const pkgPath = path.join(__dirname, 'package.json');
-const pkg = fs.existsSync(pkgPath) ? require(pkgPath) : {};
+const theme = require('./package.json').theme;
 
-let theme = {};
-if (pkg.theme && typeof(pkg.theme) === 'string') {
-    let cfgPath = pkg.theme;
-    // relative path
-    if (cfgPath.charAt(0) === '.') {
-      cfgPath = path.resolve(__dirname, cfgPath);
-	}
-    const getThemeConfig = require(cfgPath);
-    theme = getThemeConfig();
-} else if (pkg.theme && typeof(pkg.theme) === 'object') {
-    theme = pkg.theme;
-}
 
 module.exports = {
 	// entry: path.join(__dirname, 'src/index.js'),
@@ -87,7 +73,7 @@ module.exports = {
 							minimize: process.env.NODE_ENV === 'production' ? true : false //css压缩
 						}
 						
-					}, 'postcss-loader', /*'less-loader'*/`less-loader?{"modifyVars":${JSON.stringify(theme)}}`
+					}, 'postcss-loader',{loader: 'less-loader', options: {modifyVars: theme}},
 				]
 			})
 		},{

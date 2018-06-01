@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom'
 import Bundle from '../router/bundle';
 
-import { Icon } from 'antd'
+import { Icon } from 'antd-mobile'
 
 import { addTab } from 'REDUX/actions/index'
 

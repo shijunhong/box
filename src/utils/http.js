@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'qs'
-import { message } from 'antd';
+import { Toast } from 'antd-mobile';
 import { triggerRefresh, DHB_API } from 'UTILS/utils';
 
 let loginData = JSON.parse(window.sessionStorage.getItem('_loginData') || window.localStorage.getItem('loginData') || '{"accounts":{},"company":{}}')

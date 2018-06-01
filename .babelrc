@@ -12,6 +12,6 @@
    "plugins": [
      "react-hot-loader/babel",
      "transform-runtime",
-   	 ["import", { "libraryName": "antd-mobile", "libraryDirectory": "es" }]
+   	 ["import", { "libraryName": "antd-mobile", "style": true }]
    ]
  }
