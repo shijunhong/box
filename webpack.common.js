@@ -49,8 +49,8 @@ if (pkg.theme && typeof(pkg.theme) === 'string') {
 module.exports = {
 	// entry: path.join(__dirname, 'src/index.js'),
 	entry: {
-		app: [/*'classlist-polyfill',*/ 'babel-polyfill', path.join(__dirname, 'src/index.js')]/*,
-		vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']*/
+		app: path.join(__dirname, 'src/main.js')
+		/*vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']*/
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
@@ -94,8 +94,7 @@ module.exports = {
 			test: /\.(js|jsx)$/,
 			//use: ['babel-loader?cacheDirectory=true'],
 			loader: require.resolve('babel-loader'),
-			include: [path.join(__dirname, 'src')],
-			exclude: /NIM_Web_SDK.*\.js/,
+			include: [path.join(__dirname, 'src')]
 		},{
 			test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
 			use: [{
@@ -184,9 +183,9 @@ module.exports = {
 		new copyWebpackPlugin([{
 			from: 'src/assets/static', to: 'assets/static'
 		}]),
-		new copyWebpackPlugin([{
+		/* new copyWebpackPlugin([{
 			from: 'src/login.html'
-		}])
+		}]) */
 
 		/*new webpack.LoaderOptionsPlugin({  
             options: {  
